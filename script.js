@@ -9,7 +9,9 @@ const reset = document.getElementById("reset-btn");
 let selectedTip = 0;
 
 function clearTipSelection() {
-  tipButtons.forEach((b) => b.classList.remove("bg-green-400", "text-green-900"));
+  tipButtons.forEach((b) =>
+    b.classList.remove("bg-green-400", "text-green-900"),
+  );
 }
 
 function calculateAll() {
@@ -18,6 +20,14 @@ function calculateAll() {
   const tipPercent = selectedTip;
 
   reset.disabled = billValue === 0 || peopleNbr === 0;
+
+  if (reset.disabled) {
+    reset.classList.add("bg-green-800");
+    reset.classList.remove("bg-green-400");
+  } else {
+    reset.classList.remove("bg-green-800");
+    reset.classList.add("bg-green-400", "text-green-900");
+  }
 
   if (billValue === 0 || peopleNbr === 0) {
     tipAmount.textContent = "0.00";
