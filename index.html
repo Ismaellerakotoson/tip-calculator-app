@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- displays site properly based on user's device -->
+
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./images/favicon-32x32.png"
+    />
+    <link rel="stylesheet" href="./dist/output.css" />
+    <title>Tip calculator app</title>
+    <script src="script.js" defer></script>
+  </head>
+  <body
+    class="flex bg-grey-200 min-h-screen justify-center items-center font-mono font-bold text-sm"
+  >
+    <main class="flex flex-col justify-center items-center gap-14 md:p-10">
+      <div class="">
+        <img src="/images/logo.svg" alt="" />
+      </div>
+      <section class="bg-white p-4 flex flex-col gap-6 rounded-2xl lg:flex-row md:p-10 md:gap-12 max-w-4xl">
+        <section class="flex flex-col">
+          <div class="field flex flex-col">
+            <div class="flex justify-between">
+              <label for="" class="block text-grey-500 text-sm mb-2"
+                >Bill</label
+              >
+              <p class="error text-red-500 text-sm mt-1 hidden">Can't be 0</p>
+            </div>
+            <div class="relative">
+              <img
+                src="/images/icon-dollar.svg"
+                alt=""
+                class="absolute left-4 top-1/2 -translate-y-1/2"
+              />
+              <input
+                min="0"
+                type="number"
+                placeholder="0"
+                class="input w-full bg-grey-50 text-grey-500 font-bold text-2xl text-right rounded-lg px-3 py-1 outline-none focus:text-green-900 cursor-pointer lg:text-3xl"
+                id="bill"
+              />
+              <div class="hidden ring-2 ring-red-500 text-red-500"></div>
+            </div>
+          </div>
+
+          <div class="mt-8">
+            <p class="block text-grey-500 text-sm mb-2">Select Tip %</p>
+            <div
+              class="grid grid-cols-2 gap-4 text-white md:grid-cols-3 md:grid-rows-2"
+            >
+              <button
+                class="tip-btn py-1 bg-green-900 text-xl font-bold rounded-md md:py-3 hover:bg-green-400 hover:text-green-900 focus:bg-green-400 focus:text-green-900"
+                value="5"
+              >
+                5%
+              </button>
+              <button
+                class="tip-btn py-1 bg-green-900 text-xl font-bold rounded-md md:py-3 hover:bg-green-400 hover:text-green-900 focus:bg-green-400 focus:text-green-900"
+                value="10"
+              >
+                10%
+              </button>
+              <button
+                class="tip-btn py-1 bg-green-900 text-xl font-bold rounded-md md:py-3 hover:bg-green-400 hover:text-green-900 focus:bg-green-400 focus:text-green-900"
+                value="15"
+              >
+                15%
+              </button>
+              <button
+                class="tip-btn py-1 bg-green-900 text-xl font-bold rounded-md md:py-3 hover:bg-green-400 hover:text-green-900 focus:bg-green-400 focus:text-green-900"
+                value="25"
+              >
+                25%
+              </button>
+              <button
+                class="tip-btn py-1 bg-green-900 text-xl font-bold rounded-md md:py-3 hover:bg-green-400 hover:text-green-900 focus:bg-green-400 focus:text-green-900"
+                id="tip50"
+              >
+                50%
+              </button>
+              <input
+                class="input bg-grey-50 text-grey-500 py-1 text-xl font-bold rounded-md text-right md:text-2xl lg:text-3xl focus:outline-none focus:ring-2 focus:ring-green-400 focus:text-green-900 cursor-pointer"
+                placeholder="Custom"
+                type="number"
+                id="tipCustomPercent"
+              />
+              Custom
+            </div>
+          </div>
+
+          <div class="field flex flex-col mt-8">
+            <div class="flex justify-between">
+              <label for="" class="block text-grey-500 text-sm mb-2"
+                >Number of People</label
+              >
+              <p class="error text-red-500 text-sm mt-1 hidden">Can't be 0</p>
+            </div>
+
+            <div class="relative">
+              <img
+                src="/images/icon-person.svg"
+                alt=""
+                class="absolute left-4 top-1/2 -translate-y-1/2"
+              />
+              <input
+                min="0"
+                type="number"
+                placeholder="0"
+                class="input w-full bg-grey-50 text-grey-500 font-bold text-2xl text-right rounded-lg px-3 py-1 outline-none focus:text-green-900 cursor-pointer lg:text-3xl"
+                id="people"
+              />
+              <div class="hidden ring-2 ring-red-500 text-red-500"></div>
+            </div>
+          </div>
+        </section>
+        <section
+          class="bg-green-900 rounded-2xl p-6 lg:min-w-96 lg:flex lg:flex-col"
+        >
+          <div>
+            <div class="flex flex-row items-center justify-between mb-6">
+              <div>
+                <p class="text-white text-sm font-bold">Tip Amount</p>
+                <p class="text-grey-500 text-xs">/ person</p>
+              </div>
+              <p
+                class="text-green-400 font-bold text-4xl md:text-xl lg:text-5xl"
+              >
+                <span>$</span><span id="tipAmount">0.00</span>
+              </p>
+            </div>
+
+            <div class="flex flex-row items-center justify-between mb-8">
+              <div>
+                <p class="text-white text-sm font-bold">Total</p>
+                <p class="text-grey-500 text-xs">/ person</p>
+              </div>
+              <p
+                class="text-green-400 font-bold text-4xl md:text-xl lg:text-5xl"
+              >
+                <span>$</span><span id="totalPerson">0.00</span>
+              </p>
+            </div>
+          </div>
+          <button
+            class="w-full bg-cyan-400 text-green-900 font-bold py-3 rounded-lg tracking-widest text-lg lg:mt-auto lg:justify-end md:text-xl lg:text-2xl disabled:cursor-not-allowed disabled:blur-xs"
+            id="reset-btn"
+            disabled
+          >
+            RESET
+          </button>
+        </section>
+      </section>
+    </main>
+  </body>
+</html>
